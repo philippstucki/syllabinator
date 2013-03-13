@@ -1,0 +1,12 @@
+body {
+    font-family: inconsolata, arial, sans-serif;
+}
+
+textarea {
+    width: 80%;
+}
+
+input[type=text] {
+    border: 0;
+    background-color: #eee;
+}

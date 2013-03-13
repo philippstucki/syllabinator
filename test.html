@@ -1,0 +1,61 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/Hyphenator.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/en-us.js"></script>
+    <script type="text/javascript" src="js/generator.js"></script>
+    <script>
+$(document).ready(function(){
+    
+module("syllabinator.js");
+
+var testDict = 'sys|tem char|ac|ter con|sole ran|dom sched|ule' + "\n" + 'com|puter';
+
+test("array.uniq", function() {
+    deepEqual([4,8,2,4,5,8,8,2].uniq(), [4,8,2,5]);
+    deepEqual([].uniq(), []);
+    deepEqual([1, 'a', 'b', 11, 'a', '1'].uniq(), [1, 'a', 'b', 11]);
+});
+
+test("hyphenateText", function() {
+    Generator.init();
+    Generator.language = 'en';
+    equal(Generator.hyphenateText('computer'), 'com|puter');
+    equal(Generator.hyphenateText('scheduler'), 'sched|uler');
+});
+
+test("normalizeText", function() {
+    Generator.init();
+    equal(Generator.normalizeText('  com-puter.!?;:,()[]+\' '), 'com puter');
+});
+
+test("generateSyllableDict", function() {
+    Generator.init();
+    deepEqual(
+        Generator.generateSyllableDict(testDict),
+        ['sys', 'tem', 'char', 'ac', 'ter', 'con', 'sole', 'ran', 'dom', 'sched', 'ule', 'com', 'puter'].sort(),
+        'Generated syllables'
+    );
+});
+
+test("generateWord", function() {
+    Generator.init();
+    Generator.syllables = Generator.generateSyllableDict(testDict);
+    ok(Generator.generateWord(1,5).length > 0, 'Generated word may not be empty');
+});
+
+
+});
+    </script>
+</head>
+<body>
+    <h1 id="qunit-header">QUnit example</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

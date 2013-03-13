@@ -1,0 +1,70 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Syllabinator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <header>
+        <h1>Syllabinator</h1>
+    </header>
+
+    <section>
+        <h1>Dictionary</h1>
+        <textarea id="dictionary" cols="30" rows="10"></textarea>
+
+        <br/>
+        <label>
+            Text language:
+            <select name="language" id="language">
+                <option value="en-us">EN-US</option>
+                <option value="en-gb">EN-GB</option>
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+                <option value="it">IT</option>
+                <option value="es">ES</option>
+                <option value="lt">LT</option>
+            </select>
+        </label>
+        <br/>
+
+        <label>
+            Number of words to generate (doubles will be filtered):
+            <input type="text" size="5" name="numw" id="numw" value="500"/>
+        </label>
+        <br/>
+
+        <label>
+            Minimal number of syllables:
+            <input type="text" size="5" name="mins" id="mins" value="2"/>
+        </label>
+        <br/>
+
+        <label>
+            Maximal number of syllables:
+            <input type="text" size="5" name="maxs" id="maxs" value="4"/>
+        </label>
+        <br/>
+        <input type="button" name="generate" id="generate" value="Generate Words"/>
+
+        <h1>Generated Words</h1>
+        <textarea id="words" name="words" cols="100" rows="20"></textarea>
+    </section>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/Hyphenator.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/en-us.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/en-gb.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/de.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/fr.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/it.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/es.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/lt.js"></script>
+    <script type="text/javascript" src="js/lib/hyphenator/patterns/pt.js"></script>
+    <script type="text/javascript" src="js/generator.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
