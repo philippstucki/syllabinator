@@ -21,14 +21,13 @@ test("array.uniq", function() {
 
 test("hyphenateText", function() {
     Generator.init();
-    Generator.language = 'en';
-    equal(Generator.hyphenateText('computer'), 'com|puter');
-    equal(Generator.hyphenateText('scheduler'), 'sched|uler');
+    equal(Generator.hyphenateText('computer', 'en'), 'com|puter');
+    equal(Generator.hyphenateText('scheduler', 'en'), 'sched|uler');
 });
 
 test("normalizeText", function() {
     Generator.init();
-    equal(Generator.normalizeText('  com-puter.!?;:,()[]+\' '), 'com puter');
+    equal(Generator.normalizeText(' b  com-puter.!?;:,()[]+\' a '), 'b com puter a');
 });
 
 test("generateSyllableDict", function() {

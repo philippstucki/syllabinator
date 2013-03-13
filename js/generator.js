@@ -38,7 +38,7 @@ var Generator = (function (Hyphenator, $) {
     };
 
     pub.normalizeText = function(text) {
-        return text.replace(/[^A-Za-z]/g, ' ').replace(/\s+/g, ' ').replace(/^\s*/, '').replace(/\s*$/g, '').toLowerCase();
+        return text.toLowerCase().replace(/[\.,-\/#!\?\+\[\]\'$%\^&\*;:{}=\-_`~()]/g, ' ').replace(/\s+/g, ' ').replace(/^\s*/, '').replace(/\s*$/g, '').toLowerCase();
     };
 
     pub.hyphenateText = function(text, language) {
