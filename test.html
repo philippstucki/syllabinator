@@ -27,7 +27,7 @@ test("hyphenateText", function() {
 
 test("normalizeText", function() {
     Generator.init();
-    equal(Generator.normalizeText(' b  com-puter.!?;:,()[]+\' a '), 'b com puter a');
+    equal(Generator.normalizeText(' b  com-"puter.!?;:,()[]+\' a '), 'b com puter a');
 });
 
 test("generateSyllableDict", function() {
